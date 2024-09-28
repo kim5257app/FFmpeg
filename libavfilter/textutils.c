@@ -360,7 +360,7 @@ int ff_load_textfile(void *log_ctx, const char *textfile,
 
     if ((err = av_file_map(textfile, &textbuf, &textbuf_size, 0, log_ctx)) < 0) {
         av_log(log_ctx, AV_LOG_ERROR,
-               "The text file '%s' could not be read or is empty\n",
+               "The text file '%s' could not be read or is empty!!!\n",
                textfile);
         return err;
     }
