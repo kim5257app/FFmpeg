@@ -1853,10 +1853,9 @@ static int filter_frame(AVFilterLink *inlink, AVFrame *frame)
     if (s->reload && !(inl->frame_count_out % s->reload)) {
         if ((ret = ff_load_textfile(ctx, (const char *)s->textfile, &s->text, NULL)) < 0) {
             av_frame_free(&frame);
-            return ret;
         }
 #if CONFIG_LIBFRIBIDI
-        if (s->text_shaping)
+        if (ret >= 0 && s->text_shaping)
             if ((ret = shape_text(ctx)) < 0) {
                 av_frame_free(&frame);
                 return ret;
